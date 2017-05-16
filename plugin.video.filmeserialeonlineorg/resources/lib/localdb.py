@@ -12,7 +12,7 @@ def create_tables():
     try:
         dbcon = database.connect(addonCache)
         dbcur = dbcon.cursor()
-        dbcur.execute("CREATE TABLE IF NOT EXISTS watched (""title TEXT, ""label TEXT, ""overlay TEXT, ""UNIQUE(title)"");")
+        dbcur.execute("CREATE TABLE IF NOT EXISTS watch (""title TEXT, ""label TEXT, ""overlay TEXT, ""UNIQUE(title)"");")
         dbcon.commit()
     except BaseException as e: _log(u"localdb.create_tables ##Error: %s" % str(e))
 
@@ -20,7 +20,7 @@ def get_watched(title,label,overlay):
     try:
         dbcon = database.connect(addonCache)
         dbcur = dbcon.cursor()
-        dbcur.execute("SELECT overlay FROM watched WHERE title = '%s'" % (title))
+        dbcur.execute("SELECT overlay FROM watch WHERE title = '%s'" % (title))
         found = dbcur.fetchone()
         if not found:
             save_watched(title,label,overlay)
@@ -36,7 +36,7 @@ def save_watched(title,label,overlay):
         dbcon = database.connect(addonCache)
         dbcon.text_factory = str
         dbcur = dbcon.cursor()
-        dbcur.execute("INSERT INTO watched Values (?, ?, ?)", (title, label, overlay))
+        dbcur.execute("INSERT INTO watch Values (?, ?, ?)", (title, label, overlay))
         dbcon.commit()
     except BaseException as e: _log(u"localdb.save_watched ##Error: %s" % str(e))
 
@@ -44,7 +44,7 @@ def update_watched(title, label, overlay):
     try:
         dbcon = database.connect(addonCache)
         dbcon.text_factory = str
-        dbcon.execute("UPDATE watched SET overlay = '%s' WHERE title = '%s'" % (overlay, title))
+        dbcon.execute("UPDATE watch SET overlay = '%s' WHERE title = '%s'" % (overlay, title))
         dbcon.commit()
     except BaseException as e: _log(u"localdb.update_watched ##Error: %s" % str(e))
 
@@ -52,7 +52,7 @@ def delete_watched():
     try:
         dbcon = database.connect(addonCache)
         dbcur = dbcon.cursor()
-        dbcur.execute("DELETE FROM watched")
+        dbcur.execute("DELETE FROM watch")
         dbcur.execute("VACUUM")		
         dbcon.commit()
     except BaseException as e: _log(u"localdb.delete_watched ##Error: %s" % str(e))
