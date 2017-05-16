@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.keddy.repo" name="Keddy's Addons" version="1.0.0" provider-name="keddy">
+	<extension point="xbmc.addon.repository" name="Keddy's Addons">
+		<info compressed="false">https://raw.githubusercontent.com/keddyboys/keddy-repo/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/keddyboys/keddy-repo/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/keddyboys/keddy-repo/master/zips</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Addons from https://github.com/keddyboys/keddy-repo</summary>
+		<description>Download and install addons for Kodi.</description>
+		<platform>all</platform>
+	</extension>
+</addon>

@@ -1,0 +1,6 @@
+1.0.0
+-> initial version
+1.0.1
+Added Digi24
+1.0.2
+Added Myaddon

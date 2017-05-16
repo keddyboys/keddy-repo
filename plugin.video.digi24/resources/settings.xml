@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <category label="Stream quality">
+    <setting id="stream_quality" type="enum" values="Auto|Ask|240p|480p|720p" label="Choose quality (not live tv)" default="1" />
+  </category>
+</settings>
