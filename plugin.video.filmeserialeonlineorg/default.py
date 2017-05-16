@@ -44,8 +44,8 @@ def ROOT():
     addDir('Filme dupa Gen', base_url, 6, movies_thumb, 'genuri', 'filme')
     addDir('Filme dupa Ani', base_url, 6, movies_thumb, 'ani', 'filme')
     addDir('Filme dupa Calitate', base_url, 6, movies_thumb, 'calitate', 'filme')
-    addDir('Lista Seriale', 'http://www.filmeserialeonline.org/seriale-online', 6, movies_thumb, 'recente', 'seriale')
-    addDir('Episoade adaugate Recent', 'http://www.filmeserialeonline.org/episod', 6, movies_thumb, 'recente', 'episoade')
+    addDir('Lista Seriale', 'http://www.filmeserialeonline.org/seriale/', 6, movies_thumb, 'recente', 'seriale')
+    addDir('Episoade adaugate Recent', 'http://www.filmeserialeonline.org/episodul', 6, movies_thumb, 'recente', 'episoade')
     addDir('Seriale dupa Gen', base_url, 6, movies_thumb, 'genuri', 'seriale')
     addDir('Seriale dupa Ani', base_url, 6, movies_thumb, 'ani', 'seriale')
     addDir('Cautare', base_url, 3, movies_thumb)
@@ -63,7 +63,7 @@ def cauta_film(url):
     for meniu in re.compile(regex_menu, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link):
         match = re.compile(regex_submenu, re.DOTALL).findall(meniu)
         for legatura, nume in match:
-            addDir(striphtml(nume), legatura, 5, movies_thumb)
+            addDir(striphtml(nume), legatura, 5, movies_thumb)	
 
     match = re.compile('"swchItem"', re.IGNORECASE).findall(link)
     if len(match) > 0:
