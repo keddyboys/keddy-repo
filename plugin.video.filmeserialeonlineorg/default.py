@@ -24,7 +24,7 @@ search_thumb = os.path.join(settings.getAddonInfo('path'), 'resources', 'media',
 movies_thumb = os.path.join(settings.getAddonInfo('path'), 'resources', 'media', 'movies.png')
 next_thumb = os.path.join(settings.getAddonInfo('path'), 'resources', 'media', 'next.png')
 sys.path.append (__resource__)
-import localdb
+import local2db
 base_url = 'http://www.filmeserialeonline.org'
 if __addon__.getSetting("resolver") == "0":
     try:
@@ -235,7 +235,7 @@ def parse_menu(url, meniu, separare=None):
                 match = re.compile(regex_all, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link)
                 for serial, e_pisod, imagine, legatura, nume, descriere, add_data, traducator in match:
                     pisod = re.compile('sezonul-(\d+)?.+?episodul-(\d+)?', re.IGNORECASE | re.DOTALL).findall(e_pisod)
-                    #with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(pisod))
+                    with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(pisod))
                     infos = {
                         'Title': '%s S%s-E%s %s' % (serial.strip(), pisod[0][0], pisod[0][1], nume.strip()),
                         'Poster': imagine,
@@ -297,7 +297,7 @@ def parse_menu(url, meniu, separare=None):
 
 def playcount_movies(title,label, overlay):
 	#metaget.get_meta('movie',title)
-        localdb.update_watched(title,label,overlay)
+        local2db.update_watched(title,label,overlay)
 	xbmc.executebuiltin("Container.Refresh")
 
 def get_params():
@@ -352,11 +352,11 @@ def addDir(name, url, mode, iconimage, meniu=None, descriere=None):
     if meniu != None:
         u += "&meniu=" + urllib.quote_plus(meniu)
     if descriere != None:
-        #with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(descriere))
+        with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(descriere))
         try:
             infos = json.loads(descriere)
             playcount = 0
-            playcount = localdb.get_watched(infos['Title'], name, '6')
+            playcount = local2db.get_watched(infos['Title'], name, '6')
             if playcount == '7': 
                 context.append(('Marchează ca nevizionat', 'RunPlugin(%s?mode=11&url=%s&name=%s&watched=6&nume=%s)' %
                                 (sys.argv[0],url,urllib.quote_plus(infos['Title'].encode('utf-8')),urllib.quote_plus(infos['Title'].encode('utf-8')))))

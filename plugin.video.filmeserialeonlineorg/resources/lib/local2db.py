@@ -14,7 +14,7 @@ def create_tables():
         dbcur = dbcon.cursor()
         dbcur.execute("CREATE TABLE IF NOT EXISTS watch (""title TEXT, ""label TEXT, ""overlay TEXT, ""UNIQUE(title)"");")
         dbcon.commit()
-    except BaseException as e: _log(u"localdb.create_tables ##Error: %s" % str(e))
+    except BaseException as e: _log(u"local2db.create_tables ##Error: %s" % str(e))
 
 def get_watched(title,label,overlay):
     try:
@@ -29,7 +29,7 @@ def get_watched(title,label,overlay):
         else:
             #_log(u"returned found: %s" % str(found[0]))
             return found[0]
-    except BaseException as e: _log(u"localdb.get_watched ##Error: %s" % str(e))
+    except BaseException as e: _log(u"local2db.get_watched ##Error: %s" % str(e))
 
 def save_watched(title,label,overlay):
     try:
@@ -38,7 +38,7 @@ def save_watched(title,label,overlay):
         dbcur = dbcon.cursor()
         dbcur.execute("INSERT INTO watch Values (?, ?, ?)", (title, label, overlay))
         dbcon.commit()
-    except BaseException as e: _log(u"localdb.save_watched ##Error: %s" % str(e))
+    except BaseException as e: _log(u"local2db.save_watched ##Error: %s" % str(e))
 
 def update_watched(title, label, overlay):
     try:
@@ -46,7 +46,7 @@ def update_watched(title, label, overlay):
         dbcon.text_factory = str
         dbcon.execute("UPDATE watch SET overlay = '%s' WHERE title = '%s'" % (overlay, title))
         dbcon.commit()
-    except BaseException as e: _log(u"localdb.update_watched ##Error: %s" % str(e))
+    except BaseException as e: _log(u"local2db.update_watched ##Error: %s" % str(e))
 
 def delete_watched():
     try:
@@ -55,7 +55,7 @@ def delete_watched():
         dbcur.execute("DELETE FROM watch")
         dbcur.execute("VACUUM")		
         dbcon.commit()
-    except BaseException as e: _log(u"localdb.delete_watched ##Error: %s" % str(e))
+    except BaseException as e: _log(u"local2db.delete_watched ##Error: %s" % str(e))
 
 def _log(msg):
     s = u"%s" % (msg)
