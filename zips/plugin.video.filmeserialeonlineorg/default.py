@@ -37,7 +37,7 @@ else:
     except:
         pass
 
-localdb.create_tables()
+local2db.create_tables()
 
 def ROOT():
     addDir('Filme adaugate Recent', base_url, 6, movies_thumb, 'recente', 'filme')
