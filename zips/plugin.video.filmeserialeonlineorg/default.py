@@ -40,7 +40,7 @@ else:
 local2db.create_tables()
 
 def ROOT():
-    addDir('Filme adaugate Recent', base_url, 6, movies_thumb, 'recente', 'filme')
+    addDir('Filme adaugate Recent', 'http://www.filmeserialeonline.org/filme-online/', 6, movies_thumb, 'recente', 'filme')
     addDir('Filme dupa Gen', base_url, 6, movies_thumb, 'genuri', 'filme')
     addDir('Filme dupa Ani', base_url, 6, movies_thumb, 'ani', 'filme')
     addDir('Filme dupa Calitate', base_url, 6, movies_thumb, 'calitate', 'filme')
@@ -206,9 +206,9 @@ def parse_menu(url, meniu, separare=None):
     if link:
         if meniu == 'recente':
             if separare and (separare == 'filme' or separare == 'seriale'):
-                regex_all = '''<div id="mt-(.+?)<span class="calidad2">(.+?)</span>'''
+                regex_all = '''<div id="mt-(.+?)<div class="typepost">(.+?)</div><span class="calidad2">(.+?)</span>'''
                 regex_info = '''src="(.+?)".+?boxinfo.+?href="(.+?)".+?"tt">(.+?)</.+?"ttx">(.+?)</.+?(?:IMDB|TMDb):(.+?)</s.+?"year">(.+?)<'''
-                for bloc, tip in re.compile(regex_all, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link):
+                for bloc, type, tip in re.compile(regex_all, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link):
                     match = re.compile(regex_info, re.DOTALL).findall(bloc)
                     for imagine, legatura, nume, descriere, imdb, an in match:
                         infos = {
@@ -222,7 +222,7 @@ def parse_menu(url, meniu, separare=None):
                             }
                         infos = striphtml(json.dumps(infos)).replace("\n", "")
                         nume = striphtml(nume + ' - ' + tip)
-                        if 'eri' in tip:
+                        if 'eri' in type:
                             separare = 'seriale'
                         else:
                             separare = 'filme'
@@ -297,7 +297,7 @@ def parse_menu(url, meniu, separare=None):
 
 def playcount_movies(title,label, overlay):
 	#metaget.get_meta('movie',title)
-        local2db.update_watched(title,label,overlay)
+        local2db.update_watch(title,label,overlay)
 	xbmc.executebuiltin("Container.Refresh")
 
 def get_params():
@@ -352,17 +352,17 @@ def addDir(name, url, mode, iconimage, meniu=None, descriere=None):
     if meniu != None:
         u += "&meniu=" + urllib.quote_plus(meniu)
     if descriere != None:
-        with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(descriere))
+       # with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(descriere))
         try:
             infos = json.loads(descriere)
             playcount = 0
-            playcount = local2db.get_watched(infos['Title'], name, '6')
+            playcount = local2db.get_watch(infos['Title'], name, '6')
             if playcount == '7': 
-                context.append(('Marchează ca nevizionat', 'RunPlugin(%s?mode=11&url=%s&name=%s&watched=6&nume=%s)' %
+                context.append(('Marchează ca nevizionat', 'RunPlugin(%s?mode=11&url=%s&name=%s&watch=6&nume=%s)' %
                                 (sys.argv[0],url,urllib.quote_plus(infos['Title'].encode('utf-8')),urllib.quote_plus(infos['Title'].encode('utf-8')))))
                 infos.update({'playcount': 1, 'overlay': playcount})
             else: 
-                context.append(('Marchează ca vizionat', 'RunPlugin(%s?mode=11&url=%s&name=%s&watched=7&nume=%s)' %
+                context.append(('Marchează ca vizionat', 'RunPlugin(%s?mode=11&url=%s&name=%s&watch=7&nume=%s)' %
                                 (sys.argv[0],url,urllib.quote_plus(infos['Title'].encode('utf-8')),urllib.quote_plus(infos['Title'].encode('utf-8')))))
             liz.setProperty('fanart_image',iconimage)
             liz.setInfo(type="Video", infoLabels=infos)
@@ -405,9 +405,9 @@ try:
 except:
     meniu = None
 try:
-    watched = urllib.unquote_plus(params["watched"])
+    watch = urllib.unquote_plus(params["watch"])
 except:
-    watched = None
+    watch = None
 
 if mode == None or url == None or len(url) < 1:
     ROOT()
@@ -430,7 +430,7 @@ elif mode == 4:
 elif mode == 10:
     video_play(url, nume, imagine, descriere)
 elif mode == 11:
-    playcount_movies(name, nume, watched)
+    playcount_movies(name, nume, watch)
 
 
 
