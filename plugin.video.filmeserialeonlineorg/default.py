@@ -40,7 +40,7 @@ else:
 local2db.create_tables()
 
 def ROOT():
-    addDir('Filme adaugate Recent', 'http://www.filmeserialeonline.org/filme-online/', 6, movies_thumb, 'recente', 'filme')
+    addDir('Filme', 'http://www.filmeserialeonline.org/filme-online/', 6, movies_thumb, 'recente', 'filme')
     addDir('Filme dupa Gen', base_url, 6, movies_thumb, 'genuri', 'filme')
     addDir('Filme dupa Calitate', base_url, 6, movies_thumb, 'calitate', 'filme')
     addDir('Lista Seriale', 'http://www.filmeserialeonline.org/seriale/', 6, movies_thumb, 'recente', 'seriale')
