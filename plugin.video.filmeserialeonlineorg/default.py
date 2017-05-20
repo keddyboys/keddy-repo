@@ -41,13 +41,13 @@ local2db.create_tables()
 
 def ROOT():
     addDir('Filme', 'http://www.filmeserialeonline.org/filme-online/', 6, movies_thumb, 'recente', 'filme')
-    addDir('Filme dupa Gen', base_url, 6, movies_thumb, 'genuri', 'filme')
-    addDir('Filme dupa Calitate', base_url, 6, movies_thumb, 'calitate', 'filme')
-    addDir('Lista Seriale', 'http://www.filmeserialeonline.org/seriale/', 6, movies_thumb, 'recente', 'seriale')
-    addDir('Episoade adaugate Recent', 'http://www.filmeserialeonline.org/episodul', 6, movies_thumb, 'recente', 'episoade')
-    addDir('Seriale dupa Gen', base_url, 6, movies_thumb, 'genuri', 'seriale')
-    addDir('Cautare dupa Ani', base_url, 6, movies_thumb, 'ani', 'filme')
-    addDir('Cautare', base_url, 3, movies_thumb)
+    addDir('Filme după Gen', base_url, 6, movies_thumb, 'genuri', 'filme')
+    addDir('Filme după Calitate', base_url, 6, movies_thumb, 'calitate', 'filme')
+    addDir('Listă Seriale', 'http://www.filmeserialeonline.org/seriale/', 6, movies_thumb, 'recente', 'seriale')
+    addDir('Episoade adăugate Recent', 'http://www.filmeserialeonline.org/episodul', 6, movies_thumb, 'recente', 'episoade')
+    addDir('Seriale după Gen', base_url, 6, movies_thumb, 'genuri', 'seriale')
+    addDir('Căutare după Ani', base_url, 6, movies_thumb, 'ani', 'filme')
+    addDir('Căutare', base_url, 3, movies_thumb)
     
 def striphtml(data):
     p = re.compile('<.*?>')
@@ -62,6 +62,7 @@ def cauta_film(url):
     for meniu in re.compile(regex_menu, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link):
         match = re.compile(regex_submenu, re.DOTALL).findall(meniu)
         for legatura, nume in match:
+		    #nume = nume.replace('&#8217;','\'')
             addDir(striphtml(nume), legatura, 5, movies_thumb)	
 
     match = re.compile('"swchItem"', re.IGNORECASE).findall(link)
@@ -200,6 +201,36 @@ def get_search(url):
     except:
         return False
 
+def parse(data): ## Cleans up the dumb number stuff thats ugly.
+	if ("&amp;"  in data):  data=data.replace('&amp;'  ,'&')#&amp;#x27;
+	if ("&nbsp;" in data):  data=data.replace('&nbsp;' ," ")
+	if ('&#' in data) and (';' in data):
+		if ("&#8211;" in data): data=data.replace("&#8211;","-") #unknown
+		if ("&#8216;" in data): data=data.replace("&#8216;","'")
+		if ("&#8217;" in data): data=data.replace("&#8217;","'")
+		if ("&#8220;" in data): data=data.replace('&#8220;','"')
+		if ("&#8221;" in data): data=data.replace('&#8221;','"')
+		if ("&#215;"  in data): data=data.replace('&#215;' ,'x')
+		if ("&#x27;"  in data): data=data.replace('&#x27;' ,"'")
+		if ("&#xF4;"  in data): data=data.replace('&#xF4;' ,"o")
+		if ("&#xb7;"  in data): data=data.replace('&#xb7;' ,"-")
+		if ("&#xFB;"  in data): data=data.replace('&#xFB;' ,"u")
+		if ("&#xE0;"  in data): data=data.replace('&#xE0;' ,"a")
+		if ("&#0421;" in data): data=data.replace('&#0421;',"")
+		if ("&#xE9;" in data):  data=data.replace('&#xE9;' ,"e")
+		if ("&#xE2;" in data):  data=data.replace('&#xE2;' ,"a")
+		if ("&#038;" in data):  data=data.replace('&#038;' ,"&")
+		
+		if ('&#' in data) and (';' in data):
+			try:		matches=re.compile('&#(.+?);').findall(data)
+			except:	matches=''
+			if (matches is not ''):
+				for match in matches:
+					if (match is not '') and (match is not ' ') and ("&#"+match+";" in data):  
+						try: data=data.replace("&#"+match+";" ,"")
+						except: pass
+	return data
+	
 def parse_menu(url, meniu, separare=None):
     link = get_url(url)
     if link:
@@ -210,8 +241,9 @@ def parse_menu(url, meniu, separare=None):
                 for bloc, tip, an in re.compile(regex_all, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link):
                     match = re.compile(regex_info, re.DOTALL).findall(bloc)
                     for imagine, legatura, nume, descriere, imdb in match:
+					   #00nume = 
                         infos = {
-                            'Title': nume,
+                            'Title': parse(nume),
                             'Poster': imagine,
                             'Plot': descriere.strip(),
                             'Year': an,
@@ -220,7 +252,7 @@ def parse_menu(url, meniu, separare=None):
                             'PlotOutline': '%s' % (descriere.strip())
                             }
                         infos = striphtml(json.dumps(infos)).replace("\n", "")
-                        nume = striphtml(nume + ' - ' + tip)
+                        nume = striphtml(parse(nume) + ' - ' + tip)
                         if 'eri' in tip:
                             separare = 'seriale'
                         else:
@@ -273,14 +305,14 @@ def parse_menu(url, meniu, separare=None):
             elif separare and separare == 'seriale':
                 match = re.compile(regex_cat, re.DOTALL).findall(an[1])
             for legatura, nume in match:
-                addDir(nume, legatura, 6, movies_thumb, 'recente', separare)
+                addDir(parse(nume), legatura, 6, movies_thumb, 'recente', separare)
         elif meniu == 'calitate':
             regex_cats = '''"filtro_y">.+?calita(.+?)</div'''
             regex_cat = '''href="(.+?)">(.+?)<'''
             for cat in re.compile(regex_cats, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link):
                 match = re.compile(regex_cat, re.DOTALL).findall(cat)
                 for legatura, nume in match:
-                    addDir(nume, legatura, 6, movies_thumb, 'recente', 'filme')
+                    addDir(parse(nume), legatura, 6, movies_thumb, 'recente', 'filme')
         elif meniu == 'episoade':
             regex_all = '''numerando">(\d+ x \d+)<.+?href="(.+?)" >(.+?)<.+?date">(.+?)<'''
             episod = re.compile(regex_all, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link)
@@ -292,7 +324,7 @@ def parse_menu(url, meniu, separare=None):
                 infos['Season'] = ep_data[0]
                 infos['Episode'] = ep_data[1]
                 infos = json.dumps(infos)
-                addDir(striphtml(str(numero) + ' ' + nume).replace("\n", ""), legatura, 5, movies_thumb, descriere=infos)
+                addDir(striphtml(str(numero) + ' ' + parse(nume)).replace("\n", ""), legatura, 5, movies_thumb, descriere=infos)
 
 def playcount_movies(title,label, overlay):
 	#metaget.get_meta('movie',title)
