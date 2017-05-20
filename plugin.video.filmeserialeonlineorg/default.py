@@ -42,12 +42,11 @@ local2db.create_tables()
 def ROOT():
     addDir('Filme adaugate Recent', 'http://www.filmeserialeonline.org/filme-online/', 6, movies_thumb, 'recente', 'filme')
     addDir('Filme dupa Gen', base_url, 6, movies_thumb, 'genuri', 'filme')
-    addDir('Filme dupa Ani', base_url, 6, movies_thumb, 'ani', 'filme')
     addDir('Filme dupa Calitate', base_url, 6, movies_thumb, 'calitate', 'filme')
     addDir('Lista Seriale', 'http://www.filmeserialeonline.org/seriale/', 6, movies_thumb, 'recente', 'seriale')
     addDir('Episoade adaugate Recent', 'http://www.filmeserialeonline.org/episodul', 6, movies_thumb, 'recente', 'episoade')
     addDir('Seriale dupa Gen', base_url, 6, movies_thumb, 'genuri', 'seriale')
-    addDir('Seriale dupa Ani', base_url, 6, movies_thumb, 'ani', 'seriale')
+    addDir('Cautare dupa Ani', base_url, 6, movies_thumb, 'ani', 'filme')
     addDir('Cautare', base_url, 3, movies_thumb)
     
 def striphtml(data):
@@ -206,11 +205,11 @@ def parse_menu(url, meniu, separare=None):
     if link:
         if meniu == 'recente':
             if separare and (separare == 'filme' or separare == 'seriale'):
-                regex_all = '''<div id="mt-(.+?)<div class="typepost">(.+?)</div><span class="calidad2">(.+?)</span>'''
-                regex_info = '''src="(.+?)".+?boxinfo.+?href="(.+?)".+?"tt">(.+?)</.+?"ttx">(.+?)</.+?(?:IMDB|TMDb):(.+?)</s.+?"year">(.+?)<'''
-                for bloc, type, tip in re.compile(regex_all, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link):
+                regex_all = '''<div id="mt-(.+?)<div class="typepost">(.+?)</div>.+?<span class="year">(.+?)</span>'''
+                regex_info = '''src="(.+?)".+?boxinfo.+?href="(.+?)".+?"tt">(.+?)</.+?"ttx">(.+?)</.+?(?:IMDB|TMDb):(.+?)</s'''
+                for bloc, tip, an in re.compile(regex_all, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link):
                     match = re.compile(regex_info, re.DOTALL).findall(bloc)
-                    for imagine, legatura, nume, descriere, imdb, an in match:
+                    for imagine, legatura, nume, descriere, imdb in match:
                         infos = {
                             'Title': nume,
                             'Poster': imagine,
@@ -222,7 +221,7 @@ def parse_menu(url, meniu, separare=None):
                             }
                         infos = striphtml(json.dumps(infos)).replace("\n", "")
                         nume = striphtml(nume + ' - ' + tip)
-                        if 'eri' in type:
+                        if 'eri' in tip:
                             separare = 'seriale'
                         else:
                             separare = 'filme'
@@ -231,22 +230,20 @@ def parse_menu(url, meniu, separare=None):
                         else:
                             addDir(nume, legatura, 6, imagine, 'episoade', infos)
             if separare and separare == 'episoade':
-                regex_all = '''<td class="bb">.+?href=".+?>(.+?)<.+?href=".+?>(.+?)<.+?src="(.+?)".+?href="(.+?)".+?>(.+?)<.+?p>(.+?)</p.+?"dd"><center>(.+?)<.+?"ee"><center>(.+?)<.+?'''
+                regex_all = '''<td class="bb">.+?href=".+?>(.+?)<span>(.+?)</span>.+?href="(.+?)">(.+?)<.+?"dd">(.+?)<.+?"ee">(.+?)<.+?'''
                 match = re.compile(regex_all, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link)
-                for serial, e_pisod, imagine, legatura, nume, descriere, add_data, traducator in match:
-                    pisod = re.compile('sezonul-(\d+)?.+?episodul-(\d+)?', re.IGNORECASE | re.DOTALL).findall(e_pisod)
+                for serial, e_pisod, legatura, nume, add_data, traducator in match:
+                    pisod = re.compile('(\d+)? X (\d+)?', re.IGNORECASE | re.DOTALL).findall(e_pisod)
                     with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(pisod))
                     infos = {
                         'Title': '%s S%s-E%s %s' % (serial.strip(), pisod[0][0], pisod[0][1], nume.strip()),
-                        'Poster': imagine,
-                        'Plot': descriere.strip(),
                         'TVShowTitle': serial.strip(),
                         'Season': pisod[0][0],
                         'Episode': pisod[0][1]
                         }
                     name = '%s: %s : %s'% (serial.strip(), e_pisod, nume.strip())
                     infos = striphtml(json.dumps(infos))
-                    addDir(striphtml(name), legatura, 5, imagine, descriere=infos)
+                    addDir2(striphtml(name), legatura, 5, descriere=infos)
             match = re.compile('"pagination"|"paginador"', re.IGNORECASE).findall(link)
             if len(match) > 0:
                 if '/page/' in url:
@@ -259,6 +256,7 @@ def parse_menu(url, meniu, separare=None):
             regex_cats = '''"categorias">(.+?)</div'''
             regex_cat = '''href="(.+?)" >(.+?)<.+?n>(.+?)<'''
             gen = re.compile(regex_cats, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link)
+			#with open(xbmc.translatePath(os.path.join('special://temp', 'files1.py')), 'wb') as f: f.write(repr(gen))
             if separare and separare == 'filme':
                 match = re.compile(regex_cat, re.DOTALL).findall(gen[0])
             elif separare and separare == 'seriale':
@@ -266,24 +264,25 @@ def parse_menu(url, meniu, separare=None):
             for legatura, nume, cantitate in match:
                 addDir((nume + ' - ' + cantitate), legatura, 6, movies_thumb, 'recente', separare)
         elif meniu == 'ani':
-            regex_cats = '''"filtro_y">.+?anul(.+?)</div'''
-            regex_cat = '''href="(.+?)" >(.+?)<.+?n>(.+?)<'''
+            regex_cats = '''"filtro_y">.+?an(.+?)</div'''
+            regex_cat = '''href="(.+?)">(.+?)<'''
             an = re.compile(regex_cats, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link)
+			#with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(an))
             if separare and separare == 'filme':
                 match = re.compile(regex_cat, re.DOTALL).findall(an[0])
             elif separare and separare == 'seriale':
                 match = re.compile(regex_cat, re.DOTALL).findall(an[1])
-            for legatura, nume, cantitate in match:
-                addDir((nume + ' - ' + cantitate), legatura, 6, movies_thumb, 'recente', separare)
+            for legatura, nume in match:
+                addDir(nume, legatura, 6, movies_thumb, 'recente', separare)
         elif meniu == 'calitate':
             regex_cats = '''"filtro_y">.+?calita(.+?)</div'''
-            regex_cat = '''href="(.+?)" >(.+?)<.+?n>(.+?)<'''
+            regex_cat = '''href="(.+?)">(.+?)<'''
             for cat in re.compile(regex_cats, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link):
                 match = re.compile(regex_cat, re.DOTALL).findall(cat)
-                for legatura, nume, cantitate in match:
-                    addDir((nume + ' - ' + cantitate), legatura, 6, movies_thumb, 'recente', 'filme')
+                for legatura, nume in match:
+                    addDir(nume, legatura, 6, movies_thumb, 'recente', 'filme')
         elif meniu == 'episoade':
-            regex_all = '''numerando">(\d+ x \d+)<.+?href="(.+?)">(.+?)<.+?date">(.+?)<'''
+            regex_all = '''numerando">(\d+ x \d+)<.+?href="(.+?)" >(.+?)<.+?date">(.+?)<'''
             episod = re.compile(regex_all, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link)
             for numero, legatura, nume, data in episod:
                 ep_data = numero.split(' x ')
@@ -293,7 +292,7 @@ def parse_menu(url, meniu, separare=None):
                 infos['Season'] = ep_data[0]
                 infos['Episode'] = ep_data[1]
                 infos = json.dumps(infos)
-                addDir(striphtml(str(numero) + ' ' + nume + ' - ' + data).replace("\n", ""), legatura, 5, movies_thumb, descriere=infos)
+                addDir(striphtml(str(numero) + ' ' + nume).replace("\n", ""), legatura, 5, movies_thumb, descriere=infos)
 
 def playcount_movies(title,label, overlay):
 	#metaget.get_meta('movie',title)
@@ -367,6 +366,36 @@ def addDir(name, url, mode, iconimage, meniu=None, descriere=None):
             liz.setProperty('fanart_image',iconimage)
             liz.setInfo(type="Video", infoLabels=infos)
         except: liz.setInfo(type="Video", infoLabels={"Title": name, "Plot": descriere, "Poster": iconimage})
+        u += "&descriere=" + urllib.quote_plus(descriere)
+    else:
+        liz.setInfo(type="Video", infoLabels={"Title": name})
+    liz.addContextMenuItems(context, replaceItems=False)
+    ok = xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=u, listitem=liz, isFolder=True)
+    return ok
+
+def addDir2(name, url, mode, meniu=None, descriere=None):
+    u = sys.argv[0] + "?url=" + urllib.quote_plus(url) + "&mode=" + str(mode) + "&name=" + urllib.quote_plus(name)
+    ok = True
+    context = []
+    liz = xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage="DefaultFolder.png")
+    if meniu != None:
+        u += "&meniu=" + urllib.quote_plus(meniu)
+    if descriere != None:
+       # with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(descriere))
+        try:
+            infos = json.loads(descriere)
+            playcount = 0
+            playcount = local2db.get_watch(infos['Title'], name, '6')
+            if playcount == '7': 
+                context.append(('Marchează ca nevizionat', 'RunPlugin(%s?mode=11&url=%s&name=%s&watch=6&nume=%s)' %
+                                (sys.argv[0],url,urllib.quote_plus(infos['Title'].encode('utf-8')),urllib.quote_plus(infos['Title'].encode('utf-8')))))
+                infos.update({'playcount': 1, 'overlay': playcount})
+            else: 
+                context.append(('Marchează ca vizionat', 'RunPlugin(%s?mode=11&url=%s&name=%s&watch=7&nume=%s)' %
+                                (sys.argv[0],url,urllib.quote_plus(infos['Title'].encode('utf-8')),urllib.quote_plus(infos['Title'].encode('utf-8')))))
+            liz.setProperty('fanart_image',"DefaultFolder.png")
+            liz.setInfo(type="Video", infoLabels=infos)
+        except: liz.setInfo(type="Video", infoLabels={"Title": name, "Plot": descriere, "Poster": "DefaultFolder.png"})
         u += "&descriere=" + urllib.quote_plus(descriere)
     else:
         liz.setInfo(type="Video", infoLabels={"Title": name})

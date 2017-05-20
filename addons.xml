@@ -2,7 +2,7 @@
 <addons>
 <addon id="plugin.video.filmeserialeonlineorg"
        name="Filmeserialeonline.org"
-       version="1.0.3"
+       version="1.0.4"
        provider-name="keddy">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
