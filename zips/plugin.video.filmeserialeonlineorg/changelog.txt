@@ -10,3 +10,5 @@ modificat3
 modificat4
 1.0.5
 modificat5
+1.0.6
+Small fixes
