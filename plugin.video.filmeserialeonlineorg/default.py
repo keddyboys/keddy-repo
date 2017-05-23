@@ -22,6 +22,7 @@ __resource__   = xbmc.translatePath(os.path.join(__cwd__, 'resources', 'lib')).d
 __temp__       = xbmc.translatePath(os.path.join(__profile__, 'temp', '')).decode("utf-8")
 search_thumb = os.path.join(settings.getAddonInfo('path'), 'resources', 'media', 'search.png')
 movies_thumb = os.path.join(settings.getAddonInfo('path'), 'resources', 'media', 'movies.png')
+series_thumb = os.path.join(settings.getAddonInfo('path'), 'resources', 'media', 'tvshowsicon.png')
 next_thumb = os.path.join(settings.getAddonInfo('path'), 'resources', 'media', 'next.png')
 sys.path.append (__resource__)
 import local2db
@@ -252,7 +253,7 @@ def parse_menu(url, meniu, separare=None):
                             'PlotOutline': '%s' % (descriere.strip())
                             }
                         infos = striphtml(json.dumps(infos)).replace("\n", "")
-                        nume = striphtml(parse(nume) + ' - ' + tip)
+                        nume = striphtml(parse(nume))
                         if 'eri' in tip:
                             separare = 'seriale'
                         else:
@@ -273,7 +274,7 @@ def parse_menu(url, meniu, separare=None):
                         'Season': pisod[0][0],
                         'Episode': pisod[0][1]
                         }
-                    name = '%s: %s : %s'% (serial.strip(), e_pisod, nume.strip())
+                    name = '(%s) %s - %s '% (e_pisod, nume.strip(), serial.strip())
                     infos = striphtml(json.dumps(infos))
                     addDir2(striphtml(name), legatura, 5, descriere=infos)
             match = re.compile('"pagination"|"paginador"', re.IGNORECASE).findall(link)
@@ -288,7 +289,7 @@ def parse_menu(url, meniu, separare=None):
             regex_cats = '''"categorias">(.+?)</div'''
             regex_cat = '''href="(.+?)" >(.+?)<.+?n>(.+?)<'''
             gen = re.compile(regex_cats, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link)
-			#with open(xbmc.translatePath(os.path.join('special://temp', 'files1.py')), 'wb') as f: f.write(repr(gen))
+		
             if separare and separare == 'filme':
                 match = re.compile(regex_cat, re.DOTALL).findall(gen[0])
             elif separare and separare == 'seriale':
@@ -299,7 +300,7 @@ def parse_menu(url, meniu, separare=None):
             regex_cats = '''"filtro_y">.+?an(.+?)</div'''
             regex_cat = '''href="(.+?)">(.+?)<'''
             an = re.compile(regex_cats, re.IGNORECASE | re.MULTILINE | re.DOTALL).findall(link)
-			#with open(xbmc.translatePath(os.path.join('special://temp', 'files.py')), 'wb') as f: f.write(repr(an))
+		
             if separare and separare == 'filme':
                 match = re.compile(regex_cat, re.DOTALL).findall(an[0])
             elif separare and separare == 'seriale':
@@ -324,7 +325,7 @@ def parse_menu(url, meniu, separare=None):
                 infos['Season'] = ep_data[0]
                 infos['Episode'] = ep_data[1]
                 infos = json.dumps(infos)
-                addDir(striphtml(str(numero) + ' ' + parse(nume)).replace("\n", ""), legatura, 5, movies_thumb, descriere=infos)
+                addDir(striphtml(str(numero) + ' ' + parse(nume)).replace("\n", ""), legatura, 5, series_thumb, descriere=infos)
 
 def playcount_movies(title,label, overlay):
 	#metaget.get_meta('movie',title)

@@ -16,5 +16,6 @@
     <summary>Filme si seriale subtitrate de pe Filmeserialeonline.org</summary>
     <description>Vizioneaza filmele si serialele subtitrate disponibile pe Filmeserialeonline.org</description>
     <platform>all</platform>
+	<news> Small fixed</news>
   </extension>
 </addon>
