@@ -12,7 +12,7 @@ import xbmcgui
 import xbmcplugin
 import json
 
-settings = xbmcaddon.Addon(id='plugin.video.filmeserialeonlineorg')
+settings = xbmcaddon.Addon(id='plugin.video.fso_org')
 __addon__ = xbmcaddon.Addon()
 __scriptid__   = __addon__.getAddonInfo('id')
 __scriptname__ = __addon__.getAddonInfo('name')
@@ -49,6 +49,7 @@ def ROOT():
     addDir('Seriale după Gen', base_url, 6, movies_thumb, 'genuri', 'seriale')
     addDir('Căutare după Ani', base_url, 6, movies_thumb, 'ani', 'filme')
     addDir('Căutare', base_url, 3, movies_thumb)
+	addDir('Cookie-uri', plugin://plugin.program.chrome.launcher/?url=URLENCODED_URL&mode=showSite&stopPlayback=no, 12, movies_thumb)
     
 def striphtml(data):
     p = re.compile('<.*?>')
@@ -493,7 +494,7 @@ elif mode == 10:
     video_play(url, nume, imagine, descriere)
 elif mode == 11:
     playcount_movies(name, nume, watch)
-
-
+elif mode == 13:
+    plugin://plugin.program.chrome.launcher/?url=URLENCODED_URL&mode=showSite&stopPlayback=no
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))

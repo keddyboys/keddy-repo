@@ -2,3 +2,5 @@
 -> initial version
 1.0.1
 Added filmeserialeonline.org
+1.0.2
+Added filmenoi.biz
