@@ -72,7 +72,7 @@
 		<datadir zip="true">https://raw.githubusercontent.com/keddyboys/keddy-repo/master/zips</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>Install Addons from https://github.com/keddyboys/kingul-repo</summary>
+		<summary>Install Addons from https://github.com/keddyboys/keddy-repo</summary>
 		<description>Download and install addons for Kodi.</description>
                 <disclaimer>Keddy</disclaimer>
 		<platform>all</platform>
