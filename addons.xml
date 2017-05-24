@@ -30,6 +30,8 @@
        provider-name="keddy">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.urlresolver" version="3.0.0"/>
+    <import addon="script.mrknow.urlresolver" version="2016.04.06.1"/>
 	<import addon="plugin.program.chrome.launcher" version="1.2.0"/>
   </requires>
   <extension point="xbmc.python.pluginsource"
@@ -40,6 +42,7 @@
     <summary>Filme si seriale subtitrate de pe Filmeserialeonline.org</summary>
     <description>Vizioneaza filmele si serialele subtitrate disponibile pe Filmeserialeonline.org</description>
     <platform>all</platform>
+    <news>First version</news>
   </extension>
 </addon>
 <addon id="plugin.video.filmenoibiz"
@@ -48,6 +51,8 @@
        provider-name="keddy">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.urlresolver" version="3.0.0"/>
+    <import addon="script.mrknow.urlresolver" version="2016.04.06.1"/>
   </requires>
   <extension point="xbmc.python.pluginsource"
             library="default.py">
@@ -57,6 +62,7 @@
     <summary>Filme subtitrate de pe Filmenoi.biz</summary>
     <description>Vizioneaza filmele subtitrate disponibile pe Filmenoi.biz</description>
     <platform>all</platform>
+    <news>Small Fixes</news>
   </extension>
 </addon>
 <addon id="repository.keddy.repo" name="Keddy's Addons" version="1.0.2" provider-name="keddy">
