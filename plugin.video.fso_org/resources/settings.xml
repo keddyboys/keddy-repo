@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-    <category label="Setari">
-      <setting id="resolver" type="enum" values="TVAddons|MrKnow" label="Alege Resolver" default="0"/>
-      <setting id="stopop" type="bool" label="Dezactivare pop-up" default="false"/>
-    </category>   
-</settings>

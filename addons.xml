@@ -1,38 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
-<addon
-    id="plugin.program.chrome.launcher"
-    name="Chrome Launcher"
-    version="1.2.0"
-    provider-name="Jani (@rasjani) Mikkonen">
-    <requires>
-        <import addon="xbmc.python"     version="2.24.0"/>
-        <import addon="xbmc.addon"      version="16.0.0"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <summary lang="en">Launch websites via Chrome in Kiosk-mode</summary>
-        <language></language>
-        <description lang="en">Launch websites via Chrome in Kiosk-mode</description>
-        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-        <source>https://github.com/rasjani/plugin.program.chrome.launcher</source>
-        <forum>http://forum.kodi.tv/showthread.php?tid=170965</forum>
-        <website>https://www.google.com/chrome</website>
-        <email>jani dot mikkonen at gmail.com</email>
-    </extension>
-</addon>
-<addon id="plugin.video.fso_org"
+<addon id="plugin.video.filmeserialeonlineorg"
        name="Filmeserialeonline.org"
        version="1.0.0"
        provider-name="keddy">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.urlresolver" version="3.0.0"/>
+    <import addon="script.module.urlresolver" version="4.0.09"/>
     <import addon="script.mrknow.urlresolver" version="2016.04.06.1"/>
-	<import addon="plugin.program.chrome.launcher" version="1.2.0"/>
   </requires>
   <extension point="xbmc.python.pluginsource"
             library="default.py">
@@ -43,26 +18,6 @@
     <description>Vizioneaza filmele si serialele subtitrate disponibile pe Filmeserialeonline.org</description>
     <platform>all</platform>
     <news>First version</news>
-  </extension>
-</addon>
-<addon id="plugin.video.filmenoibiz"
-       name="Filmenoi.biz"
-       version="1.0.0"
-       provider-name="keddy">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.urlresolver" version="3.0.0"/>
-    <import addon="script.mrknow.urlresolver" version="2016.04.06.1"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-            library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Filme subtitrate de pe Filmenoi.biz</summary>
-    <description>Vizioneaza filmele subtitrate disponibile pe Filmenoi.biz</description>
-    <platform>all</platform>
-    <news>Small Fixes</news>
   </extension>
 </addon>
 <addon id="repository.keddy.repo" name="Keddy's Addons" version="1.0.2" provider-name="keddy">
