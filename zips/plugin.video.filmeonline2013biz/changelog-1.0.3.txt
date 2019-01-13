@@ -1,0 +1,12 @@
+1.0.3
+Remove common cache from require
+
+1.0.2
+Fix urlresolver
+
+1.0.1
+Fix icon size
+
+[B]Version 1.0.0[/B]
+
+prima versiune

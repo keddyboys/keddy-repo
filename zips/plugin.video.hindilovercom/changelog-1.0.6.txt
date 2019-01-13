@@ -1,0 +1,21 @@
+1.0.6
+Ping-pong with urlresolver, switched to mrknow
+
+1.0.5
+Fix links, switched to urlresolver
+
+1.0.4
+Remove common cache from require
+
+1.0.3
+Fix urlresolver
+
+1.0.2
+Fix icon size
+
+1.0.1
+push version
+
+[B]Version 1.0.0[/B]
+
+prima versiune

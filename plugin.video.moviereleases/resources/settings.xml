@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="30023">
+		<setting id="playwhat" type="select" label="30024" values="Trailer|Torrenter|Custom" default="Torrenter" />	
+		<setting id="cachesites" type="bool" label="30025" default="true" />
+		<setting id="pref_language" type="select" label="30026" values="system|aa|ab|af|am|ar|as|ay|az|ba|be|bg|bh|bi|bn|bo|br|ca|co|cs|cy|da|de|dz|el|en|eo|es|et|eu|fa|fi|fj|fo|fr|fy|ga|gd|gl|gn|gu|ha|hi|hr|hu|hy|ia|ie|ik|in|is|it|iw|ja|ji|jw|ka|kk|kl|km|kn|ko|ks|ku|ky|la|ln|lo|lt|lv|mg|mi|mk|ml|mn|mo|mr|ms|mt|my|na|ne|nl|no|oc|om|or|pa|pl|ps|pt|qu|rm|rn|ro|ru|rw|sa|sd|sg|sh|si|sk|sl|sm|sn|so|sq|sr|ss|st|su|sv|sw|ta|te|tg|th|ti|tk|tl|tn|to|tr|ts|tt|tw|uk|ur|uz|vi|vo|wo|xh|yo|zh|zu" default="system" />
+                <setting id="pref_metadata" type="select" label="30313" values="OMdb|TMdb" default="TMdb"/>
+		<setting id="debug_mode" type="bool" label="30027" default="false"/>
+		<setting id="menu-view" type="select" label="30046" lvalues="30038|30039" default="0"/>		
+		<setting id="movies-view" type="select" label="30037" lvalues="30038|30039|30040|30041|30042|30043|30044|30045" default="6"/>		
+    </category>
+	<category label="30065">
+		<setting type="lsep" label="Trakt"/>
+		<setting id="trakt_user" type="text" label="30066" default=""/>
+		<setting id="trakt_password" type="text" option="hidden" label="30067" default=""/>
+		<setting id="trakt_sync" type="bool" label="30069" default="true"/>
+		<setting id="trakt_api" type="text" label="API Key" default=""/>		
+		<setting type="lsep" label="Rotten Tomatoes"/>
+		<setting id="rotten_api" type="text" label="API Key" default=""/>		
+	</category>	
+    <category label="30028">
+		<setting label="30023" type="lsep"/>	
+		<setting id="allyear" type="bool" default="true" label="30029"/>		
+		<setting id="minyear" type="slider" default="2013" label="30031" range="1900,1,2016" option="int" enable="eq(-1,false)"/>
+		<setting id="maxyear" type="slider" default="2015" label="30030" range="1900,1,2016" option="int" enable="eq(-2,false)"/>
+		<setting id="pages-num" type="slider" default="1" label="30032" range="1,1,10" option="int"/>
+		<setting label="30048" type="lsep"/>
+		<setting id="site1on" type="bool" default="true" label="30034"/>
+		<setting id="site1" type="text" default="http://www.vcdq.com/browse/1/0/3_2/10_9_21_22_23_24_6_28_32_19_11_3_2/0/2012_2013_2014_2015/0/0/0/" label="30033" visible="eq(-1,true)"/>
+		<setting id="site1sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site1pag" type="text" default="0" label="30035" visible="eq(-3,true)"/>
+		<setting label="30049" type="lsep"/>
+		<setting id="site2on" type="bool" default="true" label="30034"/>
+		<setting id="site2" type="text" default="http://www.scnsrc.me/category/films/" label="30033" visible="eq(-1,true)"/>
+		<setting id="site2sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site2pag" type="text" default="page" label="30035" visible="eq(-3,true)"/>
+		<setting label="30050" type="lsep"/>
+		<setting id="site3on" type="bool" default="true" label="30034"/>
+		<setting id="site3" type="text" default="http://www.rlslog.net/category/movies/" label="30033" visible="eq(-1,true)"/>
+		<setting id="site3sec" type="text" default="bdrip" label="30036" visible="eq(-2,true)"/>
+		<setting id="site3pag" type="text" default="page" label="30035" visible="eq(-3,true)"/>
+		<setting label="30051" type="lsep"/>
+		<setting id="site4on" type="bool" default="true" label="30034"/>
+		<setting id="site4" type="text" default="http://sceper.ws/category/movies/" label="30033" visible="eq(-1,true)"/>
+		<setting id="site4sec" type="text" default="movies-bluray-rip" label="30036" visible="eq(-2,true)"/>
+		<setting id="site4pag" type="text" default="page" label="30035" visible="eq(-3,true)"/>
+		<setting label="30052" type="lsep"/>
+		<setting id="site5on" type="bool" default="true" label="30034"/>
+		<setting id="site5" type="text" default="http://oneclickwatch.ws/category/movies/" label="30033" visible="eq(-1,true)"/>
+		<setting id="site5sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site5pag" type="text" default="page" label="30035" visible="eq(-3,true)"/>
+		<setting label="30053" type="lsep"/>
+		<setting id="site6on" type="bool" default="true" label="30034"/>
+		<setting id="site6" type="text" default="http://www.ddlvalley.rocks/category/movies/" label="30033" visible="eq(-1,true)"/>
+		<setting id="site6sec" type="text" default="bdrip" label="30036" visible="eq(-2,true)"/>
+		<setting id="site6pag" type="text" default="page" label="30035" visible="eq(-3,true)"/>
+		<setting label="30054" type="lsep"/>
+		<setting id="site7on" type="bool" default="true" label="30034"/>
+		<setting id="site7" type="text" default="http://rapidmoviez.com/l/" label="30033" visible="eq(-1,true)"/>
+		<setting id="site7sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site7pag" type="text" default="m" label="30035" visible="eq(-3,true)"/>
+		<setting label="30055" type="lsep"/>
+		<setting id="site8on" type="bool" default="true" label="30034"/>
+		<setting id="site8" type="text" default="http://www.rlsbb.com/category/movies/" label="30033" visible="eq(-1,true)"/>
+		<setting id="site8sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site8pag" type="text" default="page" label="30035" visible="eq(-3,true)"/>
+		<setting label="30056" type="lsep"/>
+		<setting id="site9on" type="bool" default="true" label="30034"/>
+		<setting id="site9" type="text" default="http://irfree.com/movies/" label="30033" visible="eq(-1,true)"/>
+		<setting id="site9sec" type="text" default="bdripbbrip" label="30036" visible="eq(-2,true)"/>
+		<setting id="site9pag" type="text" default="page" label="30035" visible="eq(-3,true)"/>
+		<setting label="30057" type="lsep"/>
+		<setting id="site10on" type="bool" default="false" label="30034"/>
+		<setting id="site10" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="site10sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site10pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+		<setting label="30058" type="lsep"/>
+		<setting id="site11on" type="bool" default="false" label="30034"/>
+		<setting id="site11" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="site11sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site11pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+		<setting label="30059" type="lsep"/>
+		<setting id="site12on" type="bool" default="false" label="30034"/>
+		<setting id="site12" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="site12sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site12pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+		<setting label="30060" type="lsep"/>
+		<setting id="site13on" type="bool" default="false" label="30034"/>
+		<setting id="site13" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="site13sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site13pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+		<setting label="30061" type="lsep"/>
+		<setting id="site14on" type="bool" default="false" label="30034"/>
+		<setting id="site14" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="site14sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site14pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+		<setting label="30062" type="lsep"/>
+		<setting id="site15on" type="bool" default="false" label="30034"/>
+		<setting id="site15" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="site15sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="site15pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+    </category>
+    <category label="30073">
+		<setting label="30048" type="lsep"/>
+		<setting id="custsite1on" type="bool" default="false" label="30034"/>
+		<setting id="custsite1" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="custsite1sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="custsite1pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+		<setting label="30049" type="lsep"/>
+		<setting id="custsite2on" type="bool" default="false" label="30034"/>
+		<setting id="custsite2" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="custsite2sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="custsite2pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+		<setting label="30050" type="lsep"/>
+		<setting id="custsite3on" type="bool" default="false" label="30034"/>
+		<setting id="custsite3" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="custsite3sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="custsite3pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+		<setting label="30051" type="lsep"/>
+		<setting id="custsite4on" type="bool" default="false" label="30034"/>
+		<setting id="custsite4" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="custsite4sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="custsite4pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+		<setting label="30052" type="lsep"/>
+		<setting id="custsite5on" type="bool" default="false" label="30034"/>
+		<setting id="custsite5" type="text" default="" label="30033" visible="eq(-1,true)"/>
+		<setting id="custsite5sec" type="text" default="" label="30036" visible="eq(-2,true)"/>
+		<setting id="custsite5pag" type="text" default="" label="30035" visible="eq(-3,true)"/>
+    </category>	
+</settings>

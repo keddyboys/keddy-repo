@@ -1,0 +1,346 @@
+﻿# Kodi Media Center language file
+msgid ""
+msgstr ""
+"Project-Id-Version: Kodi Main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Mafarricos\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#30000"
+msgid "Latest Releases"
+msgstr "Últimos Lançamentos"
+
+msgctxt "#30001"
+msgid "TMDB"
+msgstr ""
+
+msgctxt "#30002"
+msgid "IMDB"
+msgstr ""
+
+msgctxt "#30003"
+msgid "Search Movie"
+msgstr "Pesquisar Filme"
+
+msgctxt "#30004"
+msgid "Tools"
+msgstr "Ferramentas"
+
+msgctxt "#30005"
+msgid "Clean Cache"
+msgstr "Limpar Cache"
+
+msgctxt "#30006"
+msgid "AddonsResolver Settings"
+msgstr "Definições do AddonsResolver"
+
+msgctxt "#30007"
+msgid "Top 250"
+msgstr "Melhores 250"
+
+msgctxt "#30008"
+msgid "Bottom 100"
+msgstr "Piores 100"
+
+msgctxt "#30009"
+msgid "In Theaters"
+msgstr "No Cinema"
+
+msgctxt "#30010"
+msgid "Comming Soon"
+msgstr "Em Breve"
+
+msgctxt "#30011"
+msgid "US Box Office"
+msgstr "Bilheteira US"
+
+msgctxt "#30012"
+msgid "Most Voted"
+msgstr "Mais Votados"
+
+msgctxt "#30013"
+msgid "Oscar Movies"
+msgstr "Filmes com Óscars"
+
+msgctxt "#30014"
+msgid "Popular"
+msgstr ""
+
+msgctxt "#30015"
+msgid "Popular by Genre"
+msgstr "Popular por Género"
+
+msgctxt "#30016"
+msgid "Discover by Popularity"
+msgstr "Descobrir por popularidade"
+
+msgctxt "#30017"
+msgid "Search by"
+msgstr "Pesquisar por"
+
+msgctxt "#30018"
+msgid "Next"
+msgstr "Próximo"
+
+msgctxt "#30019"
+msgid "Watch Trailer"
+msgstr "Ver Trailer"
+
+msgctxt "#30020"
+msgid "Information"
+msgstr "Informação"
+
+msgctxt "#30021"
+msgid "Select Genre"
+msgstr "Seleccionar Género"
+
+msgctxt "#30022"
+msgid "Cleaned Cache"
+msgstr "Cache limpa"
+
+msgctxt "#30023"
+msgid "General"
+msgstr "Geral"
+
+msgctxt "#30024"
+msgid "What to Play"
+msgstr "Comportamento do play"
+
+msgctxt "#30025"
+msgid "Cache Sites"
+msgstr ""
+
+msgctxt "#30026"
+msgid "Preferred Metadata Language"
+msgstr "Língua pré-definida dos metadados"
+
+msgctxt "#30027"
+msgid "Debug"
+msgstr "Depuração"
+
+msgctxt "#30028"
+msgid "Latest Releases"
+msgstr "Últimos Lançamentos"
+
+msgctxt "#30029"
+msgid "Return All Years"
+msgstr "Devolver todos Anos"
+
+msgctxt "#30030"
+msgid "Max Year"
+msgstr "Ano Máximo"
+
+msgctxt "#30031"
+msgid "Min. Year"
+msgstr "Ano Mínimo"
+
+msgctxt "#30032"
+msgid "Pages to List"
+msgstr "Páginas a Listar"
+
+msgctxt "#30033"
+msgid "Url"
+msgstr "Endereço"
+
+msgctxt "#30034"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "#30035"
+msgid "Page Identifier"
+msgstr "Identificador de Página"
+
+msgctxt "#30036"
+msgid "Categories"
+msgstr "Categorias"
+
+msgctxt "#30037"
+msgid "View - Movies"
+msgstr "Vista - Filmes"
+
+msgctxt "#30038"
+msgid "List"
+msgstr "Lista"
+
+msgctxt "#30039"
+msgid "Big List"
+msgstr "Lista Grande"
+
+msgctxt "#30040"
+msgid "Miniatures"
+msgstr "Miniaturas"
+
+msgctxt "#30041"
+msgid "Posters"
+msgstr ""
+
+msgctxt "#30042"
+msgid "Fanart"
+msgstr ""
+
+msgctxt "#30043"
+msgid "Media Info 1"
+msgstr "Média Info 1"
+
+msgctxt "#30044"
+msgid "Media Info 2"
+msgstr "Média Info 2"
+
+msgctxt "#30045"
+msgid "Media Info 3"
+msgstr "Média Info 3"
+
+msgctxt "#30046"
+msgid "View - Menus"
+msgstr "Vista - Menus"
+
+msgctxt "#30047"
+msgid "Trakt"
+msgstr ""
+
+msgctxt "#30048"
+msgid "Site 1"
+msgstr ""
+
+msgctxt "#30049"
+msgid "Site 2"
+msgstr ""
+
+msgctxt "#30050"
+msgid "Site 3"
+msgstr ""
+
+msgctxt "#30051"
+msgid "Site 4"
+msgstr ""
+
+msgctxt "#30052"
+msgid "Site 5"
+msgstr ""
+
+msgctxt "#30053"
+msgid "Site 6"
+msgstr ""
+
+msgctxt "#30054"
+msgid "Site 7"
+msgstr ""
+
+msgctxt "#30055"
+msgid "Site 8"
+msgstr ""
+
+msgctxt "#30056"
+msgid "Site 9"
+msgstr ""
+
+msgctxt "#30057"
+msgid "Site 10"
+msgstr ""
+
+msgctxt "#30058"
+msgid "Site 11"
+msgstr ""
+
+msgctxt "#30059"
+msgid "Site 12"
+msgstr ""
+
+msgctxt "#30060"
+msgid "Site 13"
+msgstr ""
+
+msgctxt "#30061"
+msgid "Site 14"
+msgstr ""
+
+msgctxt "#30062"
+msgid "Site 15"
+msgstr ""
+
+msgctxt "#30063"
+msgid "Mark Watched"
+msgstr "Marcar como Visto"
+
+msgctxt "#30064"
+msgid "Mark Unwatched"
+msgstr "Marcar como Não Visto"
+	
+msgctxt "#30065"
+msgid "Accounts"
+msgstr "Contas"
+
+msgctxt "#30066"
+msgid "User"
+msgstr "Utilizador"
+
+msgctxt "#30067"
+msgid "Password"
+msgstr "Palavra-passe"
+
+msgctxt "#30068"
+msgid "MetaHandler Settings"
+msgstr "Definições do MetaHandler"
+
+msgctxt "#30069"
+msgid "Sync Watched with Trakt"
+msgstr "Sincronizar Vistos com Trakt"
+
+msgctxt "#30070"
+msgid "Getting Data..."
+msgstr "A Obter dados..."
+
+msgctxt "#30071"
+msgid "Site: %s - Page: %s"
+msgstr "Site: %s - Página: %s"
+
+msgctxt "#30072"
+msgid "Total: (%s/%s)"
+msgstr ""
+
+msgctxt "#30073"
+msgid "Latest Releases (Customs Indexers)"
+msgstr "Últimos Lançamentos (Indexadores pessoais)"
+
+msgctxt "#30074"
+msgid "Rotten Tomatoes"
+msgstr ""
+
+msgctxt "#30075"
+msgid "Opening"
+msgstr "A Estrear"
+
+msgctxt "#30076"
+msgid "DVDs"
+msgstr ""
+
+msgctxt "#30077"
+msgid "Top Rental"
+msgstr "Top Aluguer"
+
+msgctxt "#30078"
+msgid "Current Releases"
+msgstr "Lançamentos Actuais"
+
+msgctxt "#30079"
+msgid "New Releases"
+msgstr "Novos Lançamentos"
+
+msgctxt "#30080"
+msgid "Trending"
+msgstr "Tendências"
+
+msgctxt "#30310"
+msgid "Add to Library"
+msgstr "Adicionar à Biblioteca"
+
+msgctxt "#30311"
+msgid "Popular by Year"
+msgstr "Popular by Year"

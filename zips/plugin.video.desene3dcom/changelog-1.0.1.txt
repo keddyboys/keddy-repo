@@ -1,0 +1,6 @@
+ 1.0.1 - 24.Nov.2016
+ Fix afisare categorii
+ 
+ 1.0.0
+
+prima versiune

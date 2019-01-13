@@ -1,0 +1,10 @@
+# Kodi Media Center language file
+# Addon Name: Torrenter Search - Open dialog
+# Addon id: context.torrenter.dialog
+msgid ""
+msgstr ""
+
+msgctxt "#32000"
+msgid "Torrenter Search"
+msgstr ""
+

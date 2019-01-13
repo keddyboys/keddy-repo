@@ -1,0 +1,14 @@
+1.1.1c
+improved subtitle detection
+added mark for hearing impaired
+added rating based on completed percent
+
+1.1.1a
+fix
+
+1.1.1
+name detection improved
+
+1.1.0
+New release for personal use
+

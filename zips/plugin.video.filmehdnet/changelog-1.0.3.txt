@@ -1,0 +1,12 @@
+1.0.3
+Fix ol links
+
+1.0.2
+Fix openload links
+
+1.0.1
+Adaugat contextmenu cu metainfo
+
+[B]Version 1.0.0[/B]
+
+prima versiune

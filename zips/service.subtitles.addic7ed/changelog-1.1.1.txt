@@ -1,0 +1,6 @@
+1.1.1
+name detection improved
+
+1.1.0
+New release for personal use
+
