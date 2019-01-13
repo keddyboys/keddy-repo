@@ -33,4 +33,142 @@
 		<platform>all</platform>
 	</extension>
 </addon>
+<addon id="plugin.video.triluliluro" name="trilulilu.ro" provider-name="kingul" version="2.0.3">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.common.plugin.cache" version="0.9.1" />
+  </requires>
+  <extension library="default.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Filme online de la trilulilu.ro</summary>
+    <description>Urmareste videoclipuri de pe trilulilu.ro</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="plugin.video.220ro" name="220.ro" provider-name="kingul" version="1.0.8">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.common.plugin.cache" version="0.9.1" />
+  </requires>
+  <extension library="default.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Videoclipuri de pe 220.ro</summary>
+    <description>Urmareste filmulete funny, farse etc de pe 220.ro</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="plugin.video.protvro" name="Protv.ro" provider-name="kingul" version="1.0.5">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.common.plugin.cache" version="0.9.1" />
+  </requires>
+  <extension library="default.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Emisiuni Protv.ro</summary>
+    <description>Urmareste emisiunile si serialele difuzate pe ProTV</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="plugin.video.tvrplus" name="TvrPlus" provider-name="kingul" version="1.0.3">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.common.plugin.cache" version="0.9.1" />
+  </requires>
+  <extension library="default.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Emisiuni TvrPlus</summary>
+    <description>Urmareste emisiunile aflate pe TvrPlus.ro</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="plugin.video.digi24" name="Digi24" provider-name="kingul" version="1.1.5">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.common.plugin.cache" version="0.9.1" />
+  </requires>
+  <extension library="default.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Emisiuni digi24</summary>
+    <description>Urmareste emisiunile aflate pe Digi24.ro</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="service.subtitles.regielive" name="Regielive" provider-name="kingul" version="1.0.7">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension library="service.py" point="xbmc.subtitle.module" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Regielive</summary>
+    <description lang="en">Cauta si descarca subtitrari de pe subtitrari.regielive.ro</description>
+    <disclaimer lang="en" />
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum>http://forum.xbmc.org/showthread.php?tid=183114</forum>
+    <website />
+    <email />
+    <source>https://github.com/viorel-m/kodi-repo</source>    
+  </extension>
+</addon>
+<addon id="service.subtitles.subsro" name="Subs.ro" provider-name="kingul" version="1.1.0">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension library="service.py" point="xbmc.subtitle.module" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Subs.ro</summary>
+    <description lang="en">Cauta si descarca subtitrari de pe subs.ro</description>
+    <disclaimer lang="en" />
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum>http://forum.xbmc.org/showthread.php?tid=183114</forum>
+    <website />
+    <email />
+    <source>https://github.com/viorel-m/kodi-repo</source>    
+  </extension>
+</addon>
+<addon id="service.subtitles.titrariro" name="Titrari.ro" provider-name="kingul" version="1.0.7">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension library="service.py" point="xbmc.subtitle.module" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Titrari.ro</summary>
+    <description lang="en">Cauta si descarca subtitrari de pe titrari.ro</description>
+    <disclaimer lang="en" />
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum>http://forum.xbmc.org/showthread.php?tid=183114</forum>
+    <website />
+    <email />
+    <source>https://github.com/viorel-m/kodi-repo</source>    
+  </extension>
+</addon>
+<addon id="service.subtitles.subtitrarinoiro" name="Subtitrari-noi.ro" provider-name="kingul" version="1.0.7">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension library="service.py" point="xbmc.subtitle.module" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Subtitrari-noi.ro</summary>
+    <description lang="en">Cauta si descarca subtitrari de pe subtitrari-noi.ro</description>
+    <disclaimer lang="en" />
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum>http://forum.xbmc.org/showthread.php?tid=183114</forum>
+    <website />
+    <email />
+    <source>https://github.com/viorel-m/kodi-repo</source>    
+  </extension>
+</addon>
 </addons>
